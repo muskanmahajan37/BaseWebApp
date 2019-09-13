@@ -34,9 +34,21 @@
   <input class="search" type="text" placeholder="Enter City Name">
   <button type="button" onclick="searchWeather()">Search</button>
   </div>
-<div>
-<button onclick="handleSignIn()">Google Login</button>
-</div>
+  <div>
+  <button onclick="handleSignIn()">Google Login</button>
+  </div>
+
+  <form onSubmit="handleMessageFormSubmit()"action="#">
+    Title:<hr>
+    <input id="post-title"><br>
+    Body:<br>
+    <textarea id="post-body"></textarea><hr>
+    <button>Submit</button>
+  </form>
+
+
+
+
   <p>Click on the button for a surprise.</p>
 
   <button onClick="showPicture()" class="btn btn-dark">Click me</button>
