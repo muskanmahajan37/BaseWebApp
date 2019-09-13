@@ -13,6 +13,7 @@ function getWeather(){
     
     $(".city").text(data.name);
     $(".temp").text(data.main.temp+" Celcius");
+    $(".humid").text(data.main.humidity+" % Humidity Today");
   }})
 }
 
@@ -24,12 +25,14 @@ function getWeatherbySearch(searchQuery){
   $(".city").text(""); //to clean the output on page
   $(".temp").text("");
   $(".error-message").text("")
+  $(".humid").text("")
 
   $.ajax(url,{success: function(data){
     console.log(data);//to show response on console
     
     $(".city").text(data.name);
     $(".temp").text(data.main.temp+" Celcius");
+    $(".humid").text(data.main.humidity+" % HumidityToday");
   }, error: function(error){
 
     $(".error-message").text("oh oh,City not found..!")
