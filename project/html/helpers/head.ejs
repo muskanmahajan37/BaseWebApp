@@ -25,5 +25,28 @@
 
 <script> var apiKey="<%= process.env.API_KEY %>";</script>
 
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+     <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-auth.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-database.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "<%= process.env.FIREBASE_API_KEY %>",
+    authDomain: "helloworld-adb6e.firebaseapp.com",
+    databaseURL: "https://helloworld-adb6e.firebaseio.com",
+    projectId: "helloworld-adb6e",
+    storageBucket: "helloworld-adb6e.appspot.com",
+    messagingSenderId: "1009958761274",
+    appId: "1:1009958761274:web:fe33d5d35ac13483b21603"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+
 <!-- then our app's own js file -->
 <script src="js/main.js"></script>
