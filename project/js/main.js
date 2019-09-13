@@ -86,12 +86,11 @@ function addMessage(postTitle,postBody){
     body: postBody
   }
 
-
   var database = firebase.database().ref("posts");
-
-
+  console.log(database);
   var newPostRef = database.push();
   newPostRef.set(postData);
+  console.log(newPostRef);
 }
 
 function handleMessageFormSubmit(){
