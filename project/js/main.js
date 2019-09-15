@@ -1,4 +1,9 @@
 $(document).ready(function(){
+  getPosts(); //important at start
+})
+
+
+$(document).ready(function(){
   getWeather();
 })
 /* for constant display inititilly*/
@@ -9,7 +14,7 @@ function getWeather(){
   $(".temp").text("");
 
   $.ajax(url,{success: function(data){
-    console.log(data);//to show response on console
+    //console.log(data);//to show response on console
     
     $(".city").text(data.name);
     $(".temp").text(data.main.temp+" Celcius");
@@ -28,7 +33,7 @@ function getWeatherbySearch(searchQuery){
   $(".humid").text("")
 
   $.ajax(url,{success: function(data){
-    console.log(data);//to show response on console
+    //console.log(data);//to show response on console
     
     $(".city").text(data.name);
     $(".temp").text(data.main.temp+" Celcius");
@@ -90,7 +95,7 @@ function addMessage(postTitle,postBody){
   console.log(database);
   var newPostRef = database.push();
   newPostRef.set(postData);
-  console.log(newPostRef);
+  //console.log(newPostRef);
 }
 
 function handleMessageFormSubmit(){
@@ -98,5 +103,18 @@ function handleMessageFormSubmit(){
   var postBody = $("#post-body").val();
   //console.log(postTitle)
   addMessage(postTitle,postBody);
+
+}
+function getPosts(){
+  //var userId = firebase.auth().currentUser.uid;
+  return firebase.database().ref("posts").once('value').then(function(snapshot) {
+    var posts = snapshot.val() ;
+    console.log(posts);
+    // ...
+    for(var postKey in posts){
+      var post = posts[postKey];
+      $("#post-listing").append("<div>"+post.title+"-"+post.body+"</div>");
+    }
+  });
 
 }
